@@ -1,19 +1,26 @@
-// import { useState } from 'react'
-
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css'
+import { lazy, Suspense } from 'react';
+import { Loader } from './components/Loader/Loader';
+import { Header } from './components/Header/Header';
 
-function App() {
-  // const [count, setCount] = useState(0)
+const HomePage = lazy(() => import('pages/HomePage'));
+const MoviesPage = lazy(() => import('pages/MoviesPage'));
+const MovieDetailsPage = lazy(() => import('pages/MovieDetailsPage'));
 
+export const App = () => {
   return (
     <>
-            <h1>Кінопошук</h1>
-      <div className="card">
-        
-      </div>
-      
+      <Header />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Suspense>
     </>
-  )
-}
+  );
+};
 
-export default App
