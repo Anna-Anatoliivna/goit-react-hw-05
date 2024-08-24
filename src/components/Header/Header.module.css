@@ -1,6 +1,6 @@
 .header {
   display: flex;
-  align-items: center;
+  align-items: self-start;
 
   padding-top: 20px;
   padding-bottom: 20px;
@@ -23,6 +23,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  list-style: none;
 }
 
 .link {
@@ -41,9 +42,8 @@
 
 .active {
   composes: link;
-  color: var(--color-white);
-  background-color: var(--color-accent);
-
+  color: red;
+  
   padding: 6px 12px;
   border-radius: 4px;
 
@@ -53,5 +53,5 @@
 
 .link:hover,
 .link:focus {
-  color: var(--color-white);
+  color: red;
 }
