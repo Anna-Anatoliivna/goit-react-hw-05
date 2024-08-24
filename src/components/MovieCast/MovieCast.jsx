@@ -1,7 +1,9 @@
+import styles from './MovieCast.module.css';
 
 const MovieCast = () => {
   return (
-    <div>MovieCast</div>
+    <div className={styles.box}>
+      MovieCast</div>
   )
 }
 

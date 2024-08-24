@@ -1,8 +1,9 @@
-
+import styles from './MovieReviews';
 
 const MovieReviews = () => {
   return (
-    <div>MovieReviews</div>
+    <div className={styles.box}>
+      MovieReviews</div>
   )
 }
 
