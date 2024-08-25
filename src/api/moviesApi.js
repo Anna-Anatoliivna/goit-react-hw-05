@@ -31,6 +31,11 @@ export const fetchSearchMovie = async (query, page = 1) => {
   return response.data;
 };
 
+export const fetchMovieDetail = async movieId => {
+  const { data } = await axios.get(apiPath.movie +`/${movieId}`, {});
+  return data;
+};
+
 // axios
 //   .get(url, options)
 //   .then(response => console.log(response))
