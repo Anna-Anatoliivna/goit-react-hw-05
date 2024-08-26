@@ -42,6 +42,8 @@ const MovieDetailsPage = () => {
     };
     fetchDataDetail();
   }, [movieId]);
+  console.log(movieDetail);
+  
     
 
   return (
