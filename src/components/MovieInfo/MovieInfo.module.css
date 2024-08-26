@@ -5,6 +5,8 @@
   box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
   position: relative;
   margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 /* .box {
@@ -17,14 +19,12 @@
   gap: 20px;
 } */
 
-
 .img {
   position: relative;
   border-radius: 8px;
   box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
-
 
 .title {
   margin: 0 0 1rem 0;
@@ -37,11 +37,18 @@
 .details {
   margin: 0 0 1rem 0;
   font-size: 1.25rem;
-  color: #999;
-  margin: 0;
-}
-
-.accent {
-  font-size: 1.25rem;
+   margin: 0;
   font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: left;
+}
+.text {
+  font-weight: 400;
+}
+.list {
+ text-align: left; 
+ color: #333;
+ font-weight: 600;
+ padding-bottom: 20px;
 }

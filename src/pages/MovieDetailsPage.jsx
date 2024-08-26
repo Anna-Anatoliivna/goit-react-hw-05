@@ -1,15 +1,16 @@
 import {
   useEffect,
-  // useRef,
+  useRef,
   useState
 } from "react";
 import { fetchMovieDetail } from "../api/moviesApi";
 import {
-  // useLocation,
+  useLocation,
   useParams
 } from "react-router-dom";
 import Loader from "../components/Loader/Loader";
 import { Container } from "../components/Container/Container";
+import { GoBackBtn } from '../components/GoBackBtn/GoBackBtn';
 import { ErrorMessage } from "../components/ErrorMessage/ErrorMessage";
 import MovieInfo from "../components/MovieInfo/MovieInfo";
 
@@ -20,8 +21,9 @@ const MovieDetailsPage = () => {
   const [movieDetail, setMovieDetail] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  // const location = useLocation();
-  // const goBack = useRef(location?.state?.from ?? '/');
+
+  const location = useLocation();
+  const goBack = useRef(location?.state?.from ?? '/');
 
   useEffect(() => {
     const fetchDataDetail = async () => {
@@ -29,7 +31,7 @@ const MovieDetailsPage = () => {
       setError(null);
       try {
         const data = await fetchMovieDetail(movieId);
-        console.log(data);
+        // console.log(data);
 
         setMovieDetail(data);
       } catch (err) {
@@ -40,17 +42,18 @@ const MovieDetailsPage = () => {
     };
     fetchDataDetail();
   }, [movieId]);
-  console.log(movieDetail);
-  
+    
 
   return (
     <div>
       <Container>
-        {/* <GoBackBtn path={goBack.current}>Go Back </GoBackBtn> */}
+        <GoBackBtn path={goBack.current}>Go Back </GoBackBtn>
         {isLoading && <Loader />}
-        <ErrorMessage textAlign="center">
-          Something went wrong - {error}
-        </ErrorMessage>
+        {error && (
+          <ErrorMessage textAlign="center">
+            Something went wrong - {error}
+          </ErrorMessage>
+        )}
         {movieDetail && <MovieInfo {...movieDetail} />}
       </Container>
     </div>

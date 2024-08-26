@@ -36,7 +36,16 @@ export const fetchMovieDetail = async movieId => {
   return data;
 };
 
-// axios
-//   .get(url, options)
-//   .then(response => console.log(response))
-//   .catch(err => console.error(err));
+export const getCastById = async movieId => {
+  const response = await axios.get(`/movie/${movieId}/credits`);
+  return response.data;
+};
+export const getReviewsById = async movieId => {
+  const response = await axios.get(`/movie/${movieId}/reviews`, {
+    params: {
+      language: 'en-US',
+      page: '1',
+    },
+  });
+  return response.data;
+};
