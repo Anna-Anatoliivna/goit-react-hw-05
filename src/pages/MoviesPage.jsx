@@ -8,7 +8,7 @@ import { Container } from '../components/Container/Container';
 import { useSearchParams } from 'react-router-dom';
 
 const MoviesPage = () => {
-  const [movieList, setmovieList] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -22,7 +22,7 @@ const MoviesPage = () => {
       try {
         const data = await fetchSearchMovie(query);
         console.log(data.results);
-        setmovieList(data.results);
+        setMovies(data.results);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -39,9 +39,13 @@ const MoviesPage = () => {
     <div>
       <Container>
         <SearchForm onSubmit={onSubmit} />
-        {movieList.length > 0 && <MoviesList movieList={movieList} />}
+        {movies.length > 0 && <MoviesList movies={movies} />}
         {isLoading && <Loader />}
-        {error && (<ErrorMessage textAlign="center">Something went wrong - {error}</ErrorMessage>)}
+        {error && (
+          <ErrorMessage textAlign="center">
+            Something went wrong - {error}
+          </ErrorMessage>
+        )}
       </Container>
     </div>
   );
