@@ -12,39 +12,36 @@ const MoviesPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const movie = searchParams.get('movie');
+  const query = searchParams.get('query');
 
   useEffect(() => {
-    const fetchData = async () => {
+    if (query === 0) return;
+    const fetchDataByQuery = async () => {
       setIsLoading(true);
       setError(null);
       try {
-        const data = await fetchSearchMovie();
-        console.log(data);
-        setmovieList(data);
+        const data = await fetchSearchMovie(query);
+        console.log(data.results);
+        setmovieList(data.results);
       } catch (err) {
         setError(err.message);
       } finally {
         setIsLoading(false);
       }
     };
-    fetchData();
-  }, [movie]);
-
+    fetchDataByQuery();
+  }, [query]);
+  
   const onSubmit = query => {
-    setSearchParams({ movie: query });
+    setSearchParams({ query: query });
   };
   return (
     <div>
       <Container>
         <SearchForm onSubmit={onSubmit} />
-        {<MoviesList movieList={movieList} />}
+        {movieList.length > 0 && <MoviesList movieList={movieList} />}
         {isLoading && <Loader />}
-        {error && (
-          <ErrorMessage textAlign="center">
-            Something went wrong - {error}
-          </ErrorMessage>
-        )}
+        {error && (<ErrorMessage textAlign="center">Something went wrong - {error}</ErrorMessage>)}
       </Container>
     </div>
   );
