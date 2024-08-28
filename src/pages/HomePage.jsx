@@ -3,7 +3,7 @@ import { fetchTrendMovie } from '../api/moviesApi';
 import Loader from '../components/Loader/Loader';
 import { ErrorMessage } from '../components/ErrorMessage/ErrorMessage';
 import { Container } from '../components/Container/Container';
-import MoviesList from '../components/MoviesList/MoviesList';
+import MovieList from '../components/MovieList/MovieList';
 
 const HomePage = () => {
   const [movies, setMovies] = useState(null);
@@ -36,7 +36,7 @@ const HomePage = () => {
           Something went wrong - {error}
         </ErrorMessage>
       )}
-      {movies && <MoviesList movies={movies} />}
+      {movies && <MovieList movies={movies} />}
     </Container>
   );
 };

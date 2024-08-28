@@ -4,7 +4,7 @@ import { lazy, Suspense } from 'react';
 
 
 import  Loader from './components/Loader/Loader';
-import { Header } from './components/Header/Header';
+import { Navigation } from './components/Navigation/Navigation';
 import MovieCast from './components/MovieCast/MovieCast';
 import MovieReviews from './components/MovieReviews/MovieReviews';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
@@ -17,7 +17,7 @@ export const App = () => {
   return (
     <>
       <header>
-        <Header />
+        <Navigation />
       </header>
       <main>
         <Suspense fallback={<Loader />}>

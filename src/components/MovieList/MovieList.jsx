@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import styles from './MoviesList.module.css';
+import styles from './MovieList.module.css';
 
 
-const MoviesList = ({movies}) => {
+const MovieList = ({movies}) => {
   return (
     <ul className={styles.list}>
       {movies.map(({ id, title }) => 
@@ -15,4 +15,4 @@ const MoviesList = ({movies}) => {
 );
 };
 
-export default MoviesList
+export default MovieList

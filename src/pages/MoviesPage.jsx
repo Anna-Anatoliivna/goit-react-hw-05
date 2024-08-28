@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ErrorMessage } from '../components/ErrorMessage/ErrorMessage';
 import Loader from '../components/Loader/Loader';
-import MoviesList from '../components/MoviesList/MoviesList';
+import MovieList from '../components/MovieList/MovieList';
 import { SearchForm } from '../components/SearchForm/SearchForm';
 import { fetchSearchMovie } from '../api/moviesApi';
 import { Container } from '../components/Container/Container';
@@ -15,7 +15,7 @@ const MoviesPage = () => {
   const query = searchParams.get('query');
 
   useEffect(() => {
-    if (query === 0) return;
+    if (!query) return;
     const fetchDataByQuery = async () => {
       setIsLoading(true);
       setError(null);
@@ -39,7 +39,7 @@ const MoviesPage = () => {
     <div>
       <Container>
         <SearchForm onSubmit={onSubmit} />
-        {movies.length > 0 && <MoviesList movies={movies} />}
+        {movies.length > 0 && <MovieList movies={movies} />}
         {isLoading && <Loader />}
         {error && (
           <ErrorMessage textAlign="center">

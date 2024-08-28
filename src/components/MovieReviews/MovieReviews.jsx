@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import styles from './MovieReviews';
+import styles from './MovieReviews.module.css';
 import { useEffect, useState } from 'react';
 import { getReviewsById } from '../../api/moviesApi';
 import { ErrorMessage } from '../ErrorMessage/ErrorMessage';
